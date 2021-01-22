@@ -1,0 +1,61 @@
+﻿@model BertoniExam.Models.PhotosViewModel
+@{
+    ViewBag.Title = "AlbumPhotos";
+}
+
+<h2>Tabla de Fotos del Album @Model.Photos.FirstOrDefault().AlbumId</h2>
+
+<table border="1">
+    <tr>
+        <td>
+            <h5>Id Foto</h5>
+        </td>
+        <td>
+            <h5>Id Album</h5>
+        </td>
+        <td>
+            Tìtulo
+        </td>
+        <td>
+            Url
+        </td>
+        <td>
+            ThumbnailUrl
+        </td>
+        <td>
+            Acción
+        </td>
+    </tr>
+    @foreach (var item in Model.Photos)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.AlbumId
+            </td>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Url
+            </td>
+            <td>
+                @item.ThumbnailUrl
+            </td>
+            <td>
+                @Ajax.ActionLink("Ver Comentarios", "ViewComments", "Home", new { id = item.Id }, new AjaxOptions()
+           {
+               HttpMethod = "GET",
+               AllowCache = false,
+               InsertionMode = InsertionMode.InsertAfter,
+               UpdateTargetId = "comments"
+           })
+
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="comments"></div>

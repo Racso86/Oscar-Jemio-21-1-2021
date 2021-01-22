@@ -1,0 +1,17 @@
+﻿@model BertoniExam.Models.CommentsViewModel
+
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model.Comments)
+{
+<div class="post">
+    <div>Email: @item.Email</div>
+    <div>Id: @item.Id</div>
+    <div>PostId: @item.PostId</div>
+    <div>Nombre: @item.Name</div>
+    <div>Contenido: @item.Body</div>
+</div>
+    <hr />
+}

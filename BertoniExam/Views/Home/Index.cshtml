@@ -1,0 +1,79 @@
+﻿@model BertoniExam.Models.AlbumsViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">Id Álbum</th>
+                            <th class="column2">Id Usuario</th>
+                            <th class="column3">Tìtulo</th>
+                            <th class="column4">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Albums)
+                        {
+                            <tr>
+                                <td class="column1">
+                                    @item.Id
+                                </td>
+                                <td class="column2">
+                                    @item.UserId
+                                </td>
+                                <td class="column3">
+                                    @item.Title
+                                </td>
+                                <td class="column4">
+                                    @Html.ActionLink("Visualizar Album", "ViewAlbum", "Home", new { id = item.Id }, null)
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<table border="1">
+    <tr>
+        <td>
+            <h5>Id Álbum</h5>
+        </td>
+        <td>
+            <h5>Id Usuario</h5>
+        </td>
+        <td>
+            Tìtulo
+        </td>
+        <td>
+            Acción
+        </td>
+    </tr>
+    @foreach (var item in Model.Albums)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.UserId
+            </td>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @Html.ActionLink("Visualizar Album","ViewAlbum", "Home", new { id = item.Id },null)
+            </td>
+        </tr>
+    }
+</table>*@
